@@ -1,0 +1,138 @@
+//CREATED DATABASE
+use demo
+'switched to db demo'
+
+//CREATED COLLECTION
+db.createCollection('company')
+{ ok: 1 }
+
+//TOTAL DATABASES
+show dbs
+admin     41 kB
+config  73.7 kB
+demo    8.19 kB
+local   73.7 kB
+
+//TOTAL COLLECTIONS
+show collections
+company
+
+//INSERT ONE DATA INTO COLLECTION
+db.company.insertOne({id : '1', name : 'emp1', technology : 'java'})
+{ acknowledged: true,
+  insertedId: ObjectId("61e6aab20a383704e3c1fe8f") }
+
+//DATA INSERTED
+db.company.find()
+{ _id: ObjectId("61e6aab20a383704e3c1fe8f"),
+  id: '1',
+  name: 'emp1',
+  technology: 'java' }
+
+db.company.insertOne({id : '2', name : 'emp2', technology : 'python'})
+{ acknowledged: true,
+  insertedId: ObjectId("61e6ab240a383704e3c1fe90") }
+
+//INSERTING MORE THAN ONE DATA                                                                                                                                                                              ^
+db.company.insertMany([{id : '3', name : 'emp3', technology : 'salesforce'},{id : '4', name : 'emp4', technology : 'Nodejs'},{id : '5', name : 'emp5', technology : 'Reactjs'}])
+{ acknowledged: true,
+  insertedIds: 
+   { '0': ObjectId("61e6ad920a383704e3c1fe91"),
+     '1': ObjectId("61e6ad920a383704e3c1fe92"),
+     '2': ObjectId("61e6ad920a383704e3c1fe93") } }
+
+db.company.find()
+{ _id: ObjectId("61e6aab20a383704e3c1fe8f"),
+  id: '1',
+  name: 'emp1',
+  technology: 'java' }
+{ _id: ObjectId("61e6ab240a383704e3c1fe90"),
+  id: '2',
+  name: 'emp2',
+  technology: 'python' }
+{ _id: ObjectId("61e6ad920a383704e3c1fe91"),
+  id: '3',
+  name: 'emp3',
+  technology: 'salesforce' }
+{ _id: ObjectId("61e6ad920a383704e3c1fe92"),
+  id: '4',
+  name: 'emp4',
+  technology: 'Nodejs' }
+{ _id: ObjectId("61e6ad920a383704e3c1fe93"),
+  id: '5',
+  name: 'emp5',
+  technology: 'Reactjs' }
+
+//UPDATE COMMAND
+db.company.updateOne({name : 'emp1'},{"$set":{"name":"EMP1"}})
+{ acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0 }
+
+db.company.find()
+{ _id: ObjectId("61e6aab20a383704e3c1fe8f"),
+  id: '1',
+  name: 'EMP1',
+  technology: 'java' }
+{ _id: ObjectId("61e6ab240a383704e3c1fe90"),
+  id: '2',
+  name: 'emp2',
+  technology: 'python' }
+{ _id: ObjectId("61e6ad920a383704e3c1fe91"),
+  id: '3',
+  name: 'emp3',
+  technology: 'salesforce' }
+{ _id: ObjectId("61e6ad920a383704e3c1fe92"),
+  id: '4',
+  name: 'emp4',
+  technology: 'Nodejs' }
+{ _id: ObjectId("61e6ad920a383704e3c1fe93"),
+  id: '5',
+  name: 'emp5',
+  technology: 'Reactjs' }
+
+//DELETE COMMAND
+db.company.deleteOne({name : "EMP1"})
+{ acknowledged: true, deletedCount: 1 }
+
+db.company.find()
+{ _id: ObjectId("61e6ab240a383704e3c1fe90"),
+  id: '2',
+  name: 'emp2',
+  technology: 'python' }
+{ _id: ObjectId("61e6ad920a383704e3c1fe91"),
+  id: '3',
+  name: 'emp3',
+  technology: 'salesforce' }
+{ _id: ObjectId("61e6ad920a383704e3c1fe92"),
+  id: '4',
+  name: 'emp4',
+  technology: 'Nodejs' }
+{ _id: ObjectId("61e6ad920a383704e3c1fe93"),
+  id: '5',
+  name: 'emp5',
+  technology: 'Reactjs' }
+
+//INDEX CREATION
+db.company.createIndex({"name" : 1 })
+'name_1'
+db.company.createIndex({"name": 2},{"unique" : true})
+'name_2'
+db.company.createIndex({"name" : 3 })
+'name_3'
+db.company.createIndex({"name" : 4 })
+'name_4'
+db.company.createIndex({"name" : 5})
+'name_5'
+
+db.company.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { name: 1 }, name: 'name_1' },
+  { v: 2, key: { name: 2 }, name: 'name_2', unique: true },
+  { v: 2, key: { name: 3 }, name: 'name_3' },
+  { v: 2, key: { name: 4 }, name: 'name_4' },
+  { v: 2, key: { name: 5 }, name: 'name_5' }
+]
