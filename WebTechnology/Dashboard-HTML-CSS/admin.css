@@ -1,0 +1,107 @@
+body{
+    margin:0px;
+    border:0px;
+    
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.header{
+    width:100%;
+    height: 120px;
+    background: linear-gradient(to bottom right,rgb(15, 15, 100) 50%,rgb(89, 89, 202) 50%);
+    color: white;
+}
+#image{
+    height: 80px;
+   border-radius:50px;
+    margin-top: 5px;
+}
+.main-content{
+    display: flex;
+}
+.sidebar{
+    flex: 1;
+    height: 530px;
+    background: linear-gradient(to bottom right,rgb(46, 46, 148) ,rgb(99, 99, 155));
+    
+}
+.content{
+    flex:3;
+    height: 530px;
+    background:  linear-gradient(to bottom left,rgb(5, 5, 49) ,rgb(233, 186, 186));
+    font-size: 20px;
+    font-weight: bold;
+}
+ul li{
+    padding: 20px;
+    border-bottom: 2px solid black;
+    list-style-type: none;
+}
+.sidebar ul li:hover{
+    background-color: rgb(87, 195, 214);
+    color:white;
+}
+#btnFeedback, #btnUser, #btnUpdate, #btnDelete, #btnLogout{
+    width: 50%;
+    background-color: rgb(101, 101, 206);
+    color:white;
+}
+* {box-sizing: border-box}
+input[type=text], input[type=password] {
+   width: 100%;
+   font-size: 15px;
+   padding: 5px;
+   margin: 5px 0 10px 0;
+   display: inline-block;
+   border: none;
+   background: #f1f1f1;
+}
+label{
+   font-size: 10px;
+}
+input[type=text]:focus, input[type=password]:focus {
+   background-color: #ddd;
+   outline: none;
+}
+hr {
+   border: 1px solid #f1f1f1;
+   margin-bottom: 10px;
+}
+.cancel {
+   padding: 5px 8px;
+    color: white;
+    background-color: #ff3d2f;
+}
+.signup {
+    padding: 5px 8px;
+    background-color: #2e2294;
+ }
+ .signup a{
+    color: white;
+    text-decoration: none;
+ }
+.formContainer {
+   padding: 5px;
+}
+.formContainer p{
+   font-size: 10px;
+}
+.content{
+    overflow: scroll;
+    width:40px;
+}
+::-webkit-scrollbar {
+    display: none;
+  }
+.btn{
+    background-color: rgb(99, 99, 240);
+    color: pink;
+}
+.upper button{
+    color: blue;
+}
+.content li img{
+    width:860px;
+    height:400px;
+}
+
