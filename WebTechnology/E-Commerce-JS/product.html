@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="product.css">
+  <title>Product Layout</title>
+</head>
+<body>
+  <section class="gridd">
+    <div class="item-1" >
+      <h1>
+        <center>Product-Item </center>
+      </h1>
+      <form class="form" autocomplete="off">
+      <label>
+        Product-Name: <input type="text" id="productName" name="productName">
+      </label>
+      <br> <br>
+      <label>
+        Product-Image: <input type="file" id="productImage" class="form-control" accept=".jpg,.jpeg,.png,.jfif"
+        onchange="loadFile(event)" required />
+      </label>
+      <br> <br>
+      <label>
+        Product-Description: <input type="text" id="productDescription" name="productDescription">
+      </label>
+      <br> <br>
+      <label>
+        Product-Quantity: <input type="number" id="productQuantity" name="productQuantity">
+      </label>
+      <br> <br>
+      <label>
+        Product-Price: <input type="number" id="productPrice" name="productPrice">
+      </label>
+      <br> <br>
+     <center><input type="button"  value="Add Product"  onclick="SaveProduct(this);" /></center>
+    </div>
+  </form>
+    <div class="item-2">
+      <div class="prod-list">
+        <div class="title">
+          <div class="title-text">
+            <h1><center>Product-List</center></h1>
+          </div>
+        </div>
+        <div class="list">
+          <table id="Table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <div class="item-3">
+    <h1><center>Cart-Items</center></h1>
+  <div class="lower">
+      <div class="cart-list">
+          <div class="list">
+            <table id="cTable">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="footer">
+            <div class="set-footer">
+             <center> <div class="footer-text">Cart Total</div></center>
+            <center><div class="footer-text" id="Total">0</div></center>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+   <script src="product.js"></script>
+</body>
+</html>
