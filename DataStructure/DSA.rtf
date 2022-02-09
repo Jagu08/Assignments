@@ -1,0 +1,251 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset0 Arial;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa160\sl259\slmult0\b\f0\fs28\lang9 Data Structure and Algorithms \par
+(HackerEarth codemonk solution) 2022 \par
+Jagruti Suthar\par
+AIMDek Trainee\par
+
+\pard\sa160\sl259\slmult0\qc\ul\fs32 Arrays & Strings\fs28\par
+
+\pard\sa160\sl259\slmult0\ulnone Q-1  Monk and Rotation\fs22\par
+URL: {\fs24{\field{\*\fldinst{HYPERLINK https://www.hackerearth.com/problem/algorithm/monk-and-rotation-3-bcf1aefe/Solution }}{\fldrslt{https://www.hackerearth.com/problem/algorithm/monk-and-rotation-3-bcf1aefe/Solution\ul0\cf0}}}}\f0\fs24 :\b0\fs22\par
+import java.util.*;\par
+public class test \{\par
+    public static void main (String[] args) \{\par
+            Scanner scanner = new Scanner(System.in);\par
+        int TestCases = scanner.nextInt();\par
+        for (int i = 0; i < TestCases; i++) \{\par
+            int sizeOfArray = scanner.nextInt();\par
+            int Rotations = scanner.nextInt();\par
+            Rotations = Rotations % sizeOfArray;\par
+            scanner.nextLine();\par
+            String inputString = scanner.nextLine();\par
+            String[] inputStringArray = inputString.split(" ");\par
+            StringBuffer sb = new StringBuffer();\par
+            for (int j = 0; j < sizeOfArray; j++) \{\par
+                sb.append(inputStringArray[(sizeOfArray + j - Rotations) % sizeOfArray] + " ");\par
+            \}\par
+            System.out.print(sb);\par
+            System.out.println("");\par
+        \}\par
+    \}\par
+\}\par
+
+\pard\sa200\sl276\slmult1\fs28\par
+\b 2.Monk and Inversions\b0\par
+\b\fs22 URL\b0 : {\b\fs24{\field{\*\fldinst{HYPERLINK https://www.hackerearth.com/problem/algorithm/monk-and-inversions-arrays-strings-e5aaa427/ }}{\fldrslt{https://www.hackerearth.com/problem/algorithm/monk-and-inversions-arrays-strings-e5aaa427/\ul0\cf0}}}}\b\f0\fs24  \b0\fs22\par
+\b Solution\b0 :\par
+import java.util.*;\par
+class TestClass \{\par
+    public static void main(String args[] ) throws Exception \{\par
+        Scanner sc = new Scanner(System.in);\par
+        int T = sc.nextInt();\par
+        for(int a=0;a<T;a++)\{\par
+            int N = sc.nextInt();\par
+            int count = 0;\par
+            int[][] A= new int[N][N];\par
+            for(int i=0;i<N;i++)\{\par
+                for(int j=0;j<N;j++)\{\par
+                    A[i][j] = sc.nextInt();\par
+                \}\par
+            \}\par
+            for(int i=0;i<N;i++)\{\par
+                for(int j=0;j<N;j++)\{\par
+                    for(int k=i;k<N;k++)\{\par
+                        for(int m=j;m<N;m++)\{\par
+                            if(A[i][j]>A[k][m])\{\par
+                                count++;\par
+                            \}\par
+                        \}\par
+                    \}\par
+                \}\par
+            \}\par
+            System.out.print(count);\par
+            System.out.println();\par
+        \}                \par
+    \}\par
+\}\par
+\par
+\b\fs28 3.Cyclic shift\b0\fs22\par
+\b URL\b0 : {\b\fs24{\field{\*\fldinst{HYPERLINK https://www.hackerearth.com/problem/algorithm/maximum-binary-number-cb9a58c1/ }}{\fldrslt{https://www.hackerearth.com/problem/algorithm/maximum-binary-number-cb9a58c1/\ul0\cf0}}}}\f0\fs22\par
+\b Solution:\b0\par
+import java.io.*;\par
+import java.util.*;\par
+class TestClass\par
+\{\par
+    static int compare(LinkedList<Character> A, LinkedList<Character> B)\{\par
+        Iterator<Character> i = A.iterator();\par
+        Iterator<Character> j = B.iterator();\par
+        if(A.size() == 0)\{ return -1;\}\par
+        while (i.hasNext()) \{ // we know they have same length\par
+            char c = i.next();\par
+            char d = j.next();\par
+            if (c < d)\par
+                return -1;\par
+            else if (c > d)\par
+                return 1;\par
+        \}\par
+        return 0;\par
+    \}\par
+    public static void main(String[] args)\par
+    \{\par
+        Scanner sc = new Scanner(System.in);\par
+        int T = sc.nextInt();\par
+        while(T-- > 0)\{\par
+            int N; int K;\par
+            N = sc.nextInt();\par
+            K = sc.nextInt();\par
+            String input = sc.next();\par
+            LinkedList<Character> B = new LinkedList<>();\par
+            int d = 0;\par
+            int period = -1;\par
+            LinkedList<Character> inter = new LinkedList<>();\par
+            for(char c: input.toCharArray())\{inter.add(c);\}\par
+            for(int i = 0; i < N;i++)\{\par
+                if (compare(B, inter) < 0)\{\par
+                    B = new LinkedList<>(inter);\par
+                    d = i;\par
+                \}else if (compare(B, inter) == 0)\{\par
+                    period = i - d;\par
+                    break;\par
+                \}\par
+                inter.add(inter.removeFirst());\par
+            \}\par
+            if(period == -1)\{\par
+                System.out.println(d + (K - 1L ) * N);\par
+            \}else\{\par
+                System.out.println(d + ((K - 1L) * period));\par
+            \}\par
+        \}\par
+    \}\par
+\}\par
+\b\par
+\fs28 4.Minimum AND xor OR\b0\fs22\par
+\b URL\b0 : {\b\f1{\field{\*\fldinst{HYPERLINK https://www.hackerearth.com/practice/data-structures/arrays/1-d/practice-problems/algorithm/minimum-and-xor-or-6a05bbd4/ }}{\fldrslt{https://www.hackerearth.com/practice/data-structures/arrays/1-d/practice-problems/algorithm/minimum-and-xor-or-6a05bbd4/\ul0\cf0}}}}\f0\fs22\par
+\b Solution:\b0\par
+import java.util.*;\par
+class TestClass \{\par
+    public static void main(String args[] ) throws Exception \{\par
+        Scanner sc = new Scanner(System.in);\par
+        int t = sc.nextInt();\par
+        while(t>0) \{\par
+            t--;\par
+            int n = sc.nextInt();\par
+            int[] a = new int[n];\par
+            for(int i=0;i<n;i++) \{\par
+                a[i] = sc.nextInt();\par
+            \}\par
+            Arrays.sort(a);\par
+            int minium = a[n-1];\par
+            for(int i=n-1;i>0;i--) \{\par
+                if(minium > (a[i]^a[i-1])) \{\par
+                    minium = a[i]^a[i-1];\par
+                \}\par
+            \}\par
+            System.out.println(minium);\par
+        \}\par
+        sc.close();\par
+    \}\par
+\}\ul\fs32\par
+
+\pard\sa200\sl276\slmult1\qc\b Sorting\b0\par
+
+\pard\sa200\sl276\slmult1\ulnone\b\fs28 1.Monk and Nice Strings\b0\fs22\par
+\b URL \b0 : {\b\f1{\field{\*\fldinst{HYPERLINK https://www.hackerearth.com/practice/algorithms/sorting/insertion-sort/practice-problems/algorithm/monk-and-nice-strings-3/ }}{\fldrslt{https://www.hackerearth.com/practice/algorithms/sorting/insertion-sort/practice-problems/algorithm/monk-and-nice-strings-3/\ul0\cf0}}}}\f0\fs22\par
+\b Solution:\b0\par
+import java.util.*;\par
+class TestClass\{\par
+    public static void main(String args[]) throws Exception\{\par
+        Scanner sc=new Scanner(System.in);\par
+        int n= sc.nextInt();\par
+        String A[]=new String[n];\par
+        int count;\par
+        for(int i=0;i<n;i++)\par
+        \{\par
+            A[i]=sc.next();\par
+        \}\par
+        System.out.println("0");\par
+        for(int i=1;i<n;i++)\par
+        \{\par
+            count=0;\par
+            for(int j=0;j<i;j++)\{\par
+                if(A[i].compareTo(A[j])>0)\par
+                \{\par
+                    count++;\par
+                \}\par
+            \}\par
+            System.out.println(count);\par
+        \}\par
+    \}\par
+\}\par
+\fs28\par
+\b 2.Monk and Suffix Sort\b0\par
+\b\fs22 URL: {\f1{\field{\*\fldinst{HYPERLINK https://www.hackerearth.com/problem/algorithm/monk-and-suffix-sort-ebacdaf5/ }}{\fldrslt{https://www.hackerearth.com/problem/algorithm/monk-and-suffix-sort-ebacdaf5/\ul0\cf0}}}}\b0\f0\fs22\par
+\b Solution:\b0\par
+import java.util.*;\par
+import java.lang.*;\par
+class TestClass\{\par
+    public static void main(String args[]) throws Exception\{\par
+        Scanner scanner=new Scanner(System.in);\par
+        String str=scanner.next();\par
+        int num =scanner.nextInt();\par
+        String strArray[] = new String[str.length()];\par
+        for(int i=0;i<str.length();i++)\par
+        \{\par
+            strArray[i]=str.substring(i);\par
+        \}\par
+        Arrays.sort(strArray);\par
+        System.out.println(strArray[num-1]);\par
+    \}\par
+\}\par
+\par
+\b\fs28 3.Monk being Monitor\b0\fs22\par
+
+\pard\sl276\slmult1\b URL\b0 : \b\f1\par
+{{\field{\*\fldinst{HYPERLINK https://www.hackerearth.com/problem/algorithm/monk-being-monitor-709e0fd3/ }}{\fldrslt{https://www.hackerearth.com/problem/algorithm/monk-being-monitor-709e0fd3/\ul0\cf0}}}}\f1\fs22\par
+
+\pard\sa200\sl276\slmult1\f0 Solution:\b0\par
+import java.util.*;\par
+import java.lang.*; \par
+class TestClass \{\par
+    public static void main(String args[] ) throws Exception \par
+    \{\par
+        Scanner sc = new Scanner(System.in);\par
+        int t= sc.nextInt();\par
+        while(t --> 0)\{\par
+            int size= sc.nextInt();\par
+            int []A=new int[size];\par
+            for(int i=0;i<size;i++)\{\par
+                A[i]=sc.nextInt();\par
+            \}\par
+        int current_frequency = 0;\par
+        int min = 2147483647;\par
+        int result=0;\par
+        Arrays.sort(A);\par
+        for(int i=0;i<size;i++)\{\par
+            if(i!=size-1 && A[i]==A[i+1])\{\par
+                current_frequency++;\par
+            \}\par
+            else\{\par
+                current_frequency++;\par
+                if(min>current_frequency)\{\par
+                    min=current_frequency;\par
+                \}\par
+                else\{\par
+                    result=Math.max(result,current_frequency-min);\par
+                \}\par
+                current_frequency=0;\par
+            \}\par
+        \}\par
+        if(result>0)\{\par
+                System.out.println(result);\par
+            \}\par
+            else\{\par
+                System.out.println(-1);\par
+            \}\par
+        \}\par
+    \}\par
+\}\par
+}
+ 
